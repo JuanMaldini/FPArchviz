@@ -1,42 +1,37 @@
-import React from "react";
-import { Box, Container } from "@chakra-ui/react";
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import Contact from "./pages/Contact";
-import Projects from "./pages/Projects";
-
-const contactEmail =
-  import.meta.env.VITE_CONTACT_EMAIL ?? "contact@example.com";
-const instagramUrl =
-  import.meta.env.VITE_FOOTER_INSTAGRAM ?? "https://instagram.com";
-const twitterUrl = import.meta.env.VITE_FOOTER_TWITTER ?? "https://twitter.com";
+import AppRoutes from "./Routes/AppRoutes";
 
 function App() {
-  React.useEffect(() => {
-    const root = document.documentElement;
-    root.style.setProperty("--footer-contact-email", contactEmail);
-    root.style.setProperty("--footer-instagram", instagramUrl);
-    root.style.setProperty("--footer-twitter", twitterUrl);
-  }, [contactEmail, instagramUrl, twitterUrl]);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const targetId = location.hash.replace("#", "");
+      const target = document.getElementById(targetId);
+      if (target) {
+        const headerHeight =
+          document.querySelector("header")?.getBoundingClientRect().height ?? 0;
+        const top =
+          target.getBoundingClientRect().top +
+          window.pageYOffset -
+          headerHeight -
+          8;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   return (
-    <Box minH="100vh" display="flex" flexDirection="column">
+    <div className="min-h-screen flex flex-col bg-slate-100">
       <Navbar />
-      <Container as="main" flex="1" maxW="container.lg" py={8}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/projects" element={<Projects />} />
-        </Routes>
-      </Container>
-      <Footer
-        email={contactEmail}
-        instagram={instagramUrl}
-        twitter={twitterUrl}
-      />
-    </Box>
+      <main className="flex-1 pt-16">
+        <AppRoutes />
+      </main>
+      <Footer />
+    </div>
   );
 }
 

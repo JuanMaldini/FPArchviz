@@ -1,40 +1,30 @@
-import { Box, Container, Link, Stack, Text } from "@chakra-ui/react";
+import { FaInstagram } from "react-icons/fa";
+import { IoMailOutline } from "react-icons/io5";
 
-interface FooterProps {
-  email: string;
-  instagram: string;
-  twitter: string;
-}
+export default function Footer() {
+  const email = import.meta.env.VITE_CONTACT_EMAIL;
+  const instagram = import.meta.env.VITE_FOOTER_INSTAGRAM;
 
-export default function Footer({ email, instagram, twitter }: FooterProps) {
   return (
-    <Box
-      as="footer"
-      bg="gray.50"
-      py={6}
-      borderTop="1px solid"
-      borderColor="gray.200"
-      mt="auto"
-    >
-      <Container maxW="container.lg">
-        <Stack
-          direction={["column", "row"]}
-          justify="space-between"
-          align="center"
-        >
-          <Text fontSize="sm">
-            Contacto: <Link href={`mailto:${email}`}>{email}</Link>
-          </Text>
-          <Stack direction="row" spacing={4}>
-            <Link href={instagram} isExternal>
-              Instagram
-            </Link>
-            <Link href={twitter} isExternal>
-              Twitter
-            </Link>
-          </Stack>
-        </Stack>
-      </Container>
-    </Box>
+    <footer className="bg-white border-t border-slate-200 mt-auto">
+      <div className="container mx-auto px-4 py-6">
+        <div className="flex justify-end items-center gap-4">
+          <a
+            className="text-slate-900 hover:text-[var(--accent-color)] transition-colors"
+            href={`mailto:${email ?? "fparchviz@gmail.com"}`}
+          >
+            <IoMailOutline size={20} />
+          </a>
+          <a
+            className="text-slate-900 hover:text-[var(--accent-color)] transition-colors"
+            href={instagram ?? "https://www.instagram.com/fparchviz/"}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaInstagram size={20} />
+          </a>
+        </div>
+      </div>
+    </footer>
   );
 }
