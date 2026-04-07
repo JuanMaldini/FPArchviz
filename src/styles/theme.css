@@ -1,0 +1,22 @@
+:root {
+  --primary-blue: #3396d3;
+  --cream: #fff0ce;
+  --gold: #ebcb90;
+  --accent-color: #FFD400;
+  --accent-soft: #fff7e5;
+  --light-gray: #eeeeee;
+  --bg: #f7f9fb;
+  --text-dark: #1f2937;
+  --text-muted: #4b5563;
+  --surface: #ffffff;
+  --border: #cbd5e1;
+
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --space-section-y: 5rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+}

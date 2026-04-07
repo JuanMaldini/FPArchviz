@@ -23,7 +23,7 @@ const NavItem = ({
     onClick={onClick}
     className={
       className ??
-      "text-sm font-medium text-slate-600 hover:text-slate-900 px-3 py-2"
+      "relative px-3 py-2 text-sm font-medium text-slate-600 transition-colors duration-200 hover:text-slate-900 after:absolute after:bottom-1 after:left-3 after:right-3 after:h-0.5 after:origin-left after:scale-x-0 after:bg-[var(--accent-color)] after:transition-transform after:duration-300 hover:after:scale-x-100"
     }
   >
     {children}
@@ -118,7 +118,7 @@ export default function Navbar() {
                   key={`mobile-${item.href}`}
                   href={item.href}
                   onClick={handleNavClick(item.href, closeMenu)}
-                  className="block rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                  className="block rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-[var(--accent-soft)] hover:text-slate-900"
                 >
                   {item.label}
                 </NavItem>

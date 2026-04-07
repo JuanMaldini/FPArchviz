@@ -5,6 +5,39 @@ import DestacadosCard from "../components/DestacadosCard";
 import destacados from "../utils/DataDestacados";
 
 export default function Home() {
+  const serviceCards = [
+    {
+      title: "Estudio de Diseño Arquitectónico",
+      description:
+        "Propuestas formales y técnicas para proyectos residenciales, corporativos y de obra nueva.",
+      points: [
+        "Concepto y anteproyecto",
+        "Definición espacial",
+        "Documentación técnica",
+      ],
+    },
+    {
+      title: "Gestión de Obra y Construcción",
+      description:
+        "Acompañamiento en construcción, selección de materiales y coordinación de obra con claridad metodológica.",
+      points: [
+        "Planificación de etapas",
+        "Supervisión de ejecución",
+        "Control de calidad",
+      ],
+    },
+    {
+      title: "Visualización Arquitectónica",
+      description:
+        "Renders de alto nivel con foco en realismo, atmósfera y composición para comunicar cada proyecto con precisión.",
+      points: [
+        "Exterior e interior",
+        "Narrativa visual",
+        "Iluminación realista",
+      ],
+    },
+  ];
+
   return (
     <div id="inicio" className="bg-slate-200 text-[var(--text-dark)]">
       <section className="relative min-h-[100dvh] flex items-center  text-white">
@@ -36,26 +69,32 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[var(--surface)] py-20">
-        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8">
-          <article className="rounded-2xl p-8 bg-white shadow-xl border border-[var(--border)]">
-            <h2 className="text-3xl font-semibold mb-3 text-[var(--primary-blue)]">
-              Estudio de Diseño Arquitectónico
-            </h2>
-            <p className="text-[var(--text-muted)] leading-relaxed">
-              Propuestas formales y técnicas para proyectos residenciales,
-              corporativos y de obra nueva.
-            </p>
-          </article>
-          <article className="rounded-2xl p-8 bg-white shadow-xl border border-[var(--border)]">
-            <h2 className="text-3xl font-semibold mb-3 text-[var(--primary-blue)]">
-              Gestión de obra y construcción
-            </h2>
-            <p className="text-[var(--text-muted)] leading-relaxed">
-              Acompañamiento en construcción, selección de materiales y
-              coordinación de obra con claridad metodológica.
-            </p>
-          </article>
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+            {serviceCards.map((card) => (
+              <article
+                key={card.title}
+                className="min-h-[420px] md:min-h-[520px] rounded-none bg-white shadow-xl border border-[var(--border)] p-8 flex flex-col gap-3"
+              >
+                <div className="h-[2px] w-14 bg-[var(--accent-color)]" />
+                <h2 className="text-2xl font-semibold text-[var(--accent-color)]">
+                  {card.title}
+                </h2>
+                <p className="text-[var(--text-muted)] leading-relaxed">
+                  {card.description}
+                </p>
+                <ul className="space-y-2 text-sm text-slate-700">
+                  {card.points.map((point) => (
+                    <li key={point} className="flex items-start gap-2">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--accent-color)]" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -16,13 +16,13 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-4">
             <a
-              className="text-slate-900 hover:text-[var(--accent-color)] transition-colors"
+              className="text-slate-900 transition-colors duration-200 hover:text-[var(--accent-color)]"
               href={emailHref}
             >
               <IoMailOutline size={20} />
             </a>
             <a
-              className="text-slate-900 hover:text-[var(--accent-color)] transition-colors"
+              className="text-slate-900 transition-colors duration-200 hover:text-[var(--accent-color)]"
               href={instagramHref}
               target="_blank"
               rel="noreferrer"
