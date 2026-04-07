@@ -1,22 +1,38 @@
-import Gallery from "./gallery/gallery";
+import GalleryCard from "../components/GalleryCard";
+import gallery from "../utils/DataGallery";
+
+import DestacadosCard from "../components/DestacadosCard";
+import destacados from "../utils/DataDestacados";
 
 export default function Home() {
   return (
-    <div className="bg-[var(--bg)] text-[var(--text-dark)]">
-      <section className="relative min-h-[100dvh] flex items-center bg-[linear-gradient(135deg,rgba(51,150,211,0.92),rgba(235,203,144,0.85))] text-white">
+    <div id="inicio" className="bg-slate-200 text-[var(--text-dark)]">
+      <section className="relative min-h-[100dvh] flex items-center  text-white">
         <div className="absolute inset-0 bg-slate-900/30 backdrop-blur-sm" />
         <div className="relative container mx-auto px-4 py-24">
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight tracking-tight">
-            FPArchviz Estudio de Arquitectura
-          </h1>
-          <p className="mt-5 text-lg md:text-xl max-w-3xl text-slate-100/92">
-            Proyectos integrales de arquitectura y espacios construidos con
-            criterio técnico y estética racional.
-          </p>
-          <p className="mt-4 text-sm md:text-base max-w-2xl text-slate-100/70">
-            Consultoría, diseño arquitectónico y visualización profesional con
-            un enfoque de experiencia espacial y materialidad.
-          </p>
+          <div className="flex flex-col md:flex-row items-center gap-10">
+            <div className="md:w-1/2">
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight tracking-tight">
+                Estudio de Arquitectura
+              </h1>
+              <p className="mt-5 text-lg md:text-xl max-w-3xl text-slate-100/92">
+                Proyectos integrales de arquitectura y espacios construidos con
+                criterio técnico y estética racional.
+              </p>
+              <p className="mt-4 text-sm md:text-base max-w-2xl text-slate-100/70">
+                Consultoría, diseño arquitectónico y visualización profesional
+                con un enfoque de experiencia espacial y materialidad.
+              </p>
+            </div>
+
+            <div className="md:w-1/2">
+              <img
+                src="https://loveincorporated.blob.core.windows.net/contentimages/gallery/fd758fcd-2f8b-4d7a-8bae-2dcdbdd48e4b-cd2ce5ec-5088-4b64-8abb-e57d594540a2-Iceland.jpg"
+                alt="Espacio arquitectónico"
+                className="w-full rounded-xl shadow-md mt-10 md:mt-0"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -55,7 +71,7 @@ export default function Home() {
           </div>
           <div className="md:w-1/2">
             <img
-              src="https://images.unsplash.com/photo-1514995669114-ec9d6a2f7ae4?auto=format&fit=crop&w=1600&q=80"
+              src="https://loveincorporated.blob.core.windows.net/contentimages/gallery/fd758fcd-2f8b-4d7a-8bae-2dcdbdd48e4b-cd2ce5ec-5088-4b64-8abb-e57d594540a2-Iceland.jpg"
               alt="Espacio arquitectónico"
               className="w-full rounded-xl shadow-md"
             />
@@ -63,19 +79,36 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        id="gallery"
-        className="bg-gradient-to-r from-slate-900 to-slate-700 text-white py-20"
-      >
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold scroll-mt-20 mb-3">
-            Galería Destacada
-          </h2>
-          <p className="max-w-3xl mx-auto mb-6 text-slate-100/90">
-            Revisa los proyectos seleccionados con estilo y presencia de marca.
-          </p>
-          <div className="mt-8">
-            <Gallery />
+      <section id="gallery" className="flex flex-col items-center p-8">
+        <h2 className="mt-0 text-3xl font-bold">Galería</h2>
+        <p className="max-w-3xl mx-auto mb-6 ">
+          Revisa los proyectos seleccionados con estilo y presencia de marca.
+        </p>
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+          {gallery.map((item) => (
+            <GalleryCard key={item.id} item={item} />
+          ))}
+        </div>
+      </section>
+
+      <section className=""></section>
+
+      <section id="destacados" className="bg-[var(--bg)] py-16">
+        <div className="container mx-auto px-4">
+          <div className="mb-10 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold scroll-mt-16 text-[var(--text-dark)]">
+              Destacados
+            </h2>
+            <p className="mt-3 max-w-2xl mx-auto text-[var(--text-muted)]">
+              Arquitectura y construcción con enfoque profesional, estratégica y
+              funcional.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {destacados.map((destacado) => (
+              <DestacadosCard key={destacado.id} destacado={destacado} />
+            ))}
           </div>
         </div>
       </section>

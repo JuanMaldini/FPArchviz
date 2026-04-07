@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { ProjectData } from "../utils/dataUtils";
+import { DestacadosData } from "../utils/dataUtils";
 
 type Props = {
-  project: ProjectData;
+  destacado: DestacadosData;
 };
 
-export default function ProjectCard({ project }: Props) {
+export default function DestacadosCard({ destacado }: Props) {
   const [open, setOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -13,13 +13,13 @@ export default function ProjectCard({ project }: Props) {
   const onPrev = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setIsLoaded(false);
-    setCurrentIndex((i) => (i <= 0 ? project.gallery.length - 1 : i - 1));
+    setCurrentIndex((i) => (i <= 0 ? destacado.gallery.length - 1 : i - 1));
   };
 
   const onNext = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setIsLoaded(false);
-    setCurrentIndex((i) => (i >= project.gallery.length - 1 ? 0 : i + 1));
+    setCurrentIndex((i) => (i >= destacado.gallery.length - 1 ? 0 : i + 1));
   };
 
   return (
@@ -30,18 +30,18 @@ export default function ProjectCard({ project }: Props) {
       >
         <div className="relative h-64 md:h-80 lg:h-96">
           <img
-            src={project.gallery[0]}
-            alt={project.title}
+            src={destacado.gallery[0]}
+            alt={destacado.title}
             className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           <div className="absolute bottom-4 left-4 text-white">
-            <h3 className="text-2xl md:text-3xl font-bold">{project.title}</h3>
+            <h3 className="text-2xl md:text-3xl font-bold">{destacado.title}</h3>
           </div>
         </div>
         <div className="p-6">
           <p className="text-slate-800 text-base leading-relaxed">
-            {project.description}
+            {destacado.description}
           </p>
         </div>
       </article>
@@ -58,11 +58,11 @@ export default function ProjectCard({ project }: Props) {
             <div className="h-full text-center flex flex-col">
               <div className="relative flex-1 bg-slate-900">
                 <img
-                  src={project.gallery[currentIndex]}
-                  alt={`${project.title} ${currentIndex + 1}`}
+                  src={destacado.gallery[currentIndex]}
+                  alt={`${destacado.title} ${currentIndex + 1}`}
                   className="h-full w-full object-cover"
                 />
-                {project.gallery.length > 1 && (
+                {destacado.gallery.length > 1 && (
                   <>
                     <button
                       className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full"
@@ -80,9 +80,9 @@ export default function ProjectCard({ project }: Props) {
                 )}
               </div>
               <div className="p-4 text-left overflow-auto">
-                <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+                <h3 className="text-2xl font-bold mb-2">{destacado.title}</h3>
                 <pre className="whitespace-pre-wrap text-sm text-slate-700">
-                  {project.description}
+                  {destacado.description}
                 </pre>
               </div>
             </div>

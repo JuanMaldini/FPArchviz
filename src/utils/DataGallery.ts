@@ -1,9 +1,6 @@
-import { buildGallery } from "../../utils/dataUtils";
+import { buildGallery } from "../utils/dataUtils";
 
 const rawGalleryImages = [
-  "gallery/logo1.png",
-  "gallery/logo1.png",
-  "gallery/logo1.png",
   "gallery/logo1.png",
   "gallery/logo1.png",
   "gallery/logo1.png",

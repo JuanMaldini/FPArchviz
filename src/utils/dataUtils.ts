@@ -13,11 +13,9 @@ export const createIdFromUrl = (image: string) =>
     .replace(/-+/g, "-")
     .replace(/(^-|-$)/g, "");
 
-export type ProjectInput = {
+export type DestacadoInput = {
   title: string;
   description: string;
-  // Now gallery supports multiple images by default. For backward compatibility,
-  // `baseImage` is still accepted in data files.
   baseImage?: string;
   galleryImages?: string[];
 };
@@ -27,14 +25,14 @@ export type GalleryData = {
   image: string;
 };
 
-export type ProjectData = {
+export type DestacadosData = {
   id: string;
   title: string;
   description: string;
   gallery: string[];
 };
 
-export const buildProjects = (raw: ProjectInput[]): ProjectData[] =>
+export const buildDestacados = (raw: DestacadoInput[]): DestacadosData[] =>
   raw.map((item) => {
     const id = slugify(`${item.title}-${item.description}`);
     const normalizedGallery =

@@ -1,6 +1,6 @@
-import { buildProjects } from "../../utils/dataUtils";
+import { buildDestacados } from "./dataUtils";
 
-const projectsRaw = [
+const destacadosRaw = [
   {
     title: "Casa Minimalista",
     description: `Proyecto de arquitectura residencial con enfoque en espacios luminosos y circulaciones fluidas.
@@ -51,4 +51,4 @@ const projectsRaw = [
   },
 ];
 
-export default buildProjects(projectsRaw);
+export default buildDestacados(destacadosRaw);

@@ -1,15 +1,17 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import AppRoutes from "./Routes/AppRoutes";
+import Home from "./pages/Home";
 
 function App() {
-  const location = useLocation();
-
   useEffect(() => {
-    if (location.hash) {
-      const targetId = location.hash.replace("#", "");
+    const scrollToHash = () => {
+      if (!window.location.hash) {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        return;
+      }
+
+      const targetId = window.location.hash.replace("#", "");
       const target = document.getElementById(targetId);
       if (target) {
         const headerHeight =
@@ -17,18 +19,24 @@ function App() {
         const top =
           target.getBoundingClientRect().top +
           window.pageYOffset -
-          headerHeight -
-          8;
+          headerHeight;
         window.scrollTo({ top, behavior: "smooth" });
       }
-    }
-  }, [location]);
+    };
+
+    scrollToHash();
+    window.addEventListener("hashchange", scrollToHash);
+
+    return () => {
+      window.removeEventListener("hashchange", scrollToHash);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-100">
       <Navbar />
       <main className="flex-1 pt-16">
-        <AppRoutes />
+        <Home />
       </main>
       <Footer />
     </div>
