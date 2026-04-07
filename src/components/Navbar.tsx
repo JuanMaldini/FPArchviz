@@ -81,7 +81,7 @@ export default function Navbar() {
           className="inline-flex items-center gap-2 text-lg md:text-xl font-bold leading-none text-slate-900"
         >
           <img
-            src="/logo/logo2.svg"
+            src="/logo/logo-b.svg"
             alt="FPArchviz Logo"
             className="h-16 w-16 md:h-16 md:w-16 shrink-0"
           />
